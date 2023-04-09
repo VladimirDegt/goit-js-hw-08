@@ -9,26 +9,17 @@ const refs = {
 const player = new Player(refs.iframe);
 
 const startSecondsVideo = localStorage.getItem('videoplayer-current-time');
-player.setCurrentTime(startSecondsVideo).then(function(seconds) {
-}).catch(function(error) {
-  switch (error.name) {
-      case 'RangeError':
-          break;
-
-      default:
-          break;
-  }
-});
-
-const onPlay = () => {
-  player.on('timeupdate', (data) => {
-    localStorage.setItem('videoplayer-current-time', data.seconds);
-    });
+if (startSecondsVideo) {
+  player.setCurrentTime(startSecondsVideo);
 };
 
-const throttled = throttle(onPlay, 1000);
-player.on('play', throttled);
+const onPlay = () => {
+  player.on('timeupdate', throttle((data) => {
+    localStorage.setItem('videoplayer-current-time', data.seconds);
+    }, 1000));
+};
 
+player.on('play', onPlay);
 
 const onBtnClick = () => {
   localStorage.removeItem('videoplayer-current-time');
