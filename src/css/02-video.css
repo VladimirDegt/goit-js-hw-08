@@ -1,0 +1,17 @@
+#vimeo-player {
+  display: block;
+}
+
+.btn-clearlocalStorage {
+  display: block;
+  width: 200px;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-clearlocalStorage:hover,
+.btn-clearlocalStorage:focus {
+  background-color: tan
+}
