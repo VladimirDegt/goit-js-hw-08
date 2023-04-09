@@ -6,7 +6,11 @@ const refs = {
   btn: document.querySelector('.btn-clearlocalStorage'),
 };
 
-const player = new Player(refs.iframe);
+const options = {
+  autoplay: true,
+};
+
+const player = new Player(refs.iframe, options);
 
 const startSecondsVideo = localStorage.getItem('videoplayer-current-time');
 if (startSecondsVideo) {
