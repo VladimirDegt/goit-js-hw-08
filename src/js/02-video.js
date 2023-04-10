@@ -20,8 +20,3 @@ if (startSecondsVideo) {
 player.on('timeupdate', throttle((data) => {
   localStorage.setItem('videoplayer-current-time', data.seconds);
   }, 1000));
-
-const onBtnClick = () => {
-  localStorage.removeItem('videoplayer-current-time');
-};
-refs.btn.addEventListener('click', onBtnClick);

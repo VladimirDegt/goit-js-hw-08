@@ -3,27 +3,11 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 import { galleryItems } from './gallery-items';
+import createHtmlGalleryImgs from "./modules/createHtmlGalleryImgs";
 // Change code below this line
 
-console.log(galleryItems);
+document.querySelector('.gallery').insertAdjacentHTML("beforeend", createHtmlGalleryImgs(galleryItems));
 
-const refs = {
-  container: document.querySelector('.gallery'),
-};
-
-// ----------------------------створення розмітки----------------------------------
-const arrayImgTag = galleryItems.map ( ({preview, original, description}) => {
-  return `<li class="gallery__item">
-            <a class="gallery__link" href="${original}">
-              <img class="gallery__image" src="${preview}"" alt="${description}" />
-            </a>
-          </li>`;
-});
-
-refs.container.insertAdjacentHTML("beforeend", arrayImgTag.join(''));
-// ------------------------------END створення розмітки----------------------------------
-
-// ------------------------------підключення лайтбоксу з бібліотеці SimpleLightbox-------
 let gallery = new SimpleLightbox('.gallery a', {
   close: false, 
   showCounter: false,
@@ -31,5 +15,3 @@ let gallery = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
   captionClass: 'text__label',
 });
-
-// ------------------------------END підключення лайтбоксу-----------------------------------
