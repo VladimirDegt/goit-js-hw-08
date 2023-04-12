@@ -1,16 +1,17 @@
-const STORAGE_KEY = "feedback-form-state";
+import { getItemLocalStorage, setItemLocalStorage } from "../modules/localStorage";
 
-const onFormInput = (e) => {
-    const target = e.target;
+const onFormInput = (event) => {
+    const target = event.target;
   
-    if(localStorage.getItem(STORAGE_KEY)) {
-      const obj = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      obj[target.name] = target.value.trim();
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+    if(getItemLocalStorage()) {
+      const valueLocalStorage = JSON.parse(getItemLocalStorage());
+      valueLocalStorage[target.name] = target.value.trim();
+      setItemLocalStorage(valueLocalStorage);
     } else {
-      const dataObject = {};
-      dataObject[target.name] = target.value.trim();
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObject));
+      const valueLocalStorage = {};
+      valueLocalStorage[target.name] = target.value.trim();
+      console.log(valueLocalStorage);
+      setItemLocalStorage(valueLocalStorage);
     }
   };
 

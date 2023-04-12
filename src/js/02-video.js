@@ -1,10 +1,8 @@
 import Player from '@vimeo/player';
 import throttle from 'lodash.throttle';
 
-const refs = {
-  iframe: document.querySelector('iframe'),
-  btn: document.querySelector('.btn-clearlocalStorage'),
-};
+import { refs } from './modules/refsElements';
+import { getItemLocalStorage } from './modules/localStorage';
 
 const options = {
   autoplay: true,
@@ -12,7 +10,7 @@ const options = {
 
 const player = new Player(refs.iframe, options);
 
-const startSecondsVideo = localStorage.getItem('videoplayer-current-time');
+const startSecondsVideo = getItemLocalStorage('videoplayer-current-time');
 if (startSecondsVideo) {
   player.setCurrentTime(startSecondsVideo);
 }

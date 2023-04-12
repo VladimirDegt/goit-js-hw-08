@@ -1,21 +1,21 @@
-import sendMessageForm from '../modules/sendMessageForm';
-const STORAGE_KEY = "feedback-form-state";
+import inputMessageForm from '../modules/inputMessageForm';
+import { removeItemLocalStorage } from "../modules/localStorage";
 
-const onFormSubmit = (e) => {
-    const target = e.target;
-    const dataObjectConsole = {};
-    const fields = target.elements;
+const onFormSubmit = (event) => {
+    const target = event.target;
+    const valueLocalStorage = {};
+    const valueFieldsInput = target.elements;
     const formData = new FormData(target);
   
-    sendMessageForm(fields);
-    e.preventDefault();
+    inputMessageForm(valueFieldsInput);
+    event.preventDefault();
   
     formData.forEach ( (value, name) => {
-      dataObjectConsole[name] = value.trim();
+      valueLocalStorage[name] = value.trim();
     });
-    console.log(dataObjectConsole);
+    console.log(valueLocalStorage);
     target.reset();
-    localStorage.removeItem(STORAGE_KEY);
+    removeItemLocalStorage();
   };
 
   export default onFormSubmit;

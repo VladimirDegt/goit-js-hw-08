@@ -1,10 +1,10 @@
 const STORAGE_KEY = "feedback-form-state";
 
-const getItemLocalStorage = () => localStorage.getItem(STORAGE_KEY);
+export const getItemLocalStorage = () => localStorage.getItem(STORAGE_KEY);
 
-const setItemLocalStorage = (dataObject) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObject));
+export const setItemLocalStorage = (valueLocalStorage) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(valueLocalStorage));
 };
 
-const removeItemLocalStorage = () => localStorage.removeItem(STORAGE_KEY);
+export const removeItemLocalStorage = () => localStorage.removeItem(STORAGE_KEY);
 
