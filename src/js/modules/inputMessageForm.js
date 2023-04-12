@@ -6,6 +6,9 @@ const inputMessageForm = (valueFieldsInput) => {
       foundElementP().remove();
     }
     refs.form.insertAdjacentHTML('afterbegin', '<p style="color: red">Будь ласка заповніть усі поля!</p>');
+    
+    return true;
+
   } else {
     if (foundElementP()) {
       foundElementP().remove();
